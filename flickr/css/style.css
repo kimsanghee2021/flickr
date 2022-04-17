@@ -1,0 +1,70 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background: #eee;
+}
+
+main {
+  width: 100%;
+  padding: 50px;
+  overflow: hidden;
+}
+main section {
+  width: 100%;
+}
+main section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+main section article {
+  width: 20%;
+  float: left;
+  padding: 10px;
+}
+main section article > div {
+  width: 100%;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+}
+main section article > div .pic {
+  display: block;
+  width: 100%;
+}
+main section article > div .pic img {
+  width: 100%;
+}
+main section article > div p {
+  font: 12px/1.2 "arial";
+  color: #777;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+main section article > div .profile {
+  display: flex;
+  align-items: center;
+}
+main section article > div .profile img {
+  width: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+main section article > div .profile span {
+  font: 11px/1 "arial";
+  color: #999;
+}
+
+/*# sourceMappingURL=style.css.map */

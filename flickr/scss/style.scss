@@ -1,0 +1,42 @@
+@charset 'UTF-8';
+@import 'reset';
+
+main {
+  width: 100%; padding: 50px; overflow: hidden;
+  section{
+    width:100%; 
+    &::after {
+      content: ''; display: block; clear: both;
+    }
+    article {
+      width: calc(100% / 5); float: left; padding: 10px;
+  
+      >div {
+        width: 100%; background: #fff; padding: 10px; box-shadow: 5px 5px 20px rgba(0,0,0,.1);
+  
+        .pic {
+          display: block; width: 100%;
+  
+          img {
+            width: 100%;
+          }
+        }
+  
+        p {
+          font: 12px/1.2 'arial'; color: #777; margin-top: 5px; margin-bottom: 15px;
+        }
+  
+        .profile {
+          display: flex; align-items: center;
+  
+          img {
+            width: 25px; border-radius: 50%; margin-right: 10px;
+          }
+          span {
+            font: 11px/1 'arial'; color: #999;
+          }
+        }
+      }
+    }
+  }
+}
