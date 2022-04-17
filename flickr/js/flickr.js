@@ -1,4 +1,5 @@
 const key = '2d64e13ee8c539c8e30cf813430bc482';
+const loading = document.querySelector('.loading');
 const base = 'https://www.flickr.com/services/rest/?';
 const method_interest = 'flickr.interestingness.getList';
 const per_page = 10;
@@ -7,12 +8,13 @@ const main = document.querySelector('section');
 
 //리스트 초기화
 initList(url);
-imgLoaded();
+
 
 //데이터 호출 및 DOM생성 동기처리 함수
 async function initList(url){
     const data = await getFlickr(url);
     createList(data);
+    imgLoaded();
 }
 
 
@@ -54,23 +56,40 @@ function createList(data){
     })
     main.innerHTML = htmls;
 
+}
 
     function imgLoaded(){
-         //일단 모든 이미지를 다 불러온 후 액박이 뜨는 이미지만 대체이미지로 처리완료 
         const imgs = document.querySelectorAll('img');
+        //이때 len은 이미 body안쪽에있는 로딩 이미지까지 포함해서 100개
+        const len = imgs.length;//1001
+        let count = 0;
+
         imgs.forEach(img =>{
             img.onerror=()=>{
                 img.setAttribute('src','k1.jpg');
             }
+
+            //각각의 img dom이 반복돌면서 해당 돔에 소스 이미지까지 로딩 완료 될때 마다 
+            img.onload = ()=>{
+                //카운트값 증가
+                count++;
+                console.log(len);
+
+                if(count ==len-1){
+                    //정렬모션 처리
+                    new Isotope(main,{
+                        itemSelector : 'article',
+                        columnWidth : 'article',
+                        transitionDuration : '0.5s'
+                    });
+                    main.classList.add('on');
+                    loading.classList.add('off');
+                }
+
+            }
         });
 
-        //정렬모션 처리
-        new Isotope(main,{
-            itemSelector : 'article',
-            columnWidth : 'article',
-            transitionDuration : '0.5s'
-        })
-    }
+
 }
 
     

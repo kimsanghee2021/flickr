@@ -3,11 +3,26 @@
 
 main {
   width: 100%; padding: 50px; overflow: hidden;
-  section{
-    width:100%; 
+
+  .loading {
+    width: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+
+    &.off {
+      opacity: 0;
+    }
+  }
+
+  section {
+    width: 100%; opacity: 0; transform: translateY(100px); transition: 1s; position: relative;
+
+    &.on {
+      opacity: 1; transform: translateY(0px);
+    }
+
     &::after {
       content: ''; display: block; clear: both;
     }
+
     article {
       width: calc(100% / 5); float: left; padding: 10px;
   
@@ -30,7 +45,7 @@ main {
           display: flex; align-items: center;
   
           img {
-            width: 25px; border-radius: 50%; margin-right: 10px;
+            width: 40px; border-radius: 50%; margin-right: 10px;
           }
           span {
             font: 11px/1 'arial'; color: #999;
@@ -38,5 +53,29 @@ main {
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 1399px ){
+  main section article {
+    width: calc(100% / 4);
+  }
+}
+
+@media screen and (max-width: 999px ){
+  main section article {
+    width: calc(100% / 3);
+  }
+}
+
+@media screen and (max-width: 699px ){
+  main section article {
+    width: calc(100% / 2);
+  }
+}
+
+@media screen and (max-width: 399px ){
+  main section article {
+    width: calc(100% / 1);
   }
 }
