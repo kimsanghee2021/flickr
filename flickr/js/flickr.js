@@ -15,7 +15,14 @@ initList(url);
 
 btn.addEventListener('click',(e)=>{
     e.preventDefault();
-    let tag = input.value;
+    let tag = input.value.trim();
+
+    if(!tag){
+        alert('검색창에 입력해주세요.');
+        return;
+    } 
+    main.classList.remove('on');
+    loading.classList.remove('off');
     const url2 = `${base}method=${method_search}&api_key=${key}&per_page=${per_page}&format=json&nojsoncallback=1&tags=${tag}`;
     initList(url2);
 });
