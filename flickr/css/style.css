@@ -16,6 +16,24 @@ body {
   background: #eee;
 }
 
+header {
+  padding: 50px;
+}
+header input {
+  width: 300px;
+  height: 30px;
+  padding: 5px;
+}
+header button {
+  width: 80px;
+  height: 30px;
+  border: none;
+  background: #333;
+  font: 14px/30px "arial";
+  color: #fff;
+  text-align: center;
+}
+
 main {
   width: 100%;
   padding: 50px;

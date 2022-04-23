@@ -2,12 +2,23 @@ const key = '2d64e13ee8c539c8e30cf813430bc482';
 const loading = document.querySelector('.loading');
 const base = 'https://www.flickr.com/services/rest/?';
 const method_interest = 'flickr.interestingness.getList';
-const per_page = 10;
+const method_search = 'flickr.photos.search';
+const input = document.querySelector('input');
+const btn = document.querySelector('button');
+const per_page = 50;
 const url = `${base}method=${method_interest}&api_key=${key}&perpage=${per_page}&format=json&nojsoncallback=1`;
+
 const main = document.querySelector('section');
 
 //리스트 초기화
 initList(url);
+
+btn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    let tag = input.value;
+    const url2 = `${base}method=${method_search}&api_key=${key}&per_page=${per_page}&format=json&nojsoncallback=1&tags=${tag}`;
+    initList(url2);
+});
 
 
 //데이터 호출 및 DOM생성 동기처리 함수
